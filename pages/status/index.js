@@ -37,8 +37,7 @@ export default function StatusPage() {
     let databaseStatus = "Loading...";
     if (!isLoading && data) {
       databaseStatus = (
-        <>
-          <h2>Database</h2>
+        <div>
           <p>🗃️ Version: {data.dependencies.database.version}</p>
           <p>
             📈 Opened Connections:{" "}
@@ -47,9 +46,14 @@ export default function StatusPage() {
           <p>
             🔒 Max Connections: {data.dependencies.database.max_connections}
           </p>
-        </>
+        </div>
       );
     }
-    return databaseStatus;
+    return (
+      <>
+        <h2>Database</h2>
+        {databaseStatus}
+      </>
+    );
   }
 }
